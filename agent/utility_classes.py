@@ -8,6 +8,12 @@ from vertexai.generative_models import GenerationConfig
 from vertexai.generative_models import GenerativeModel
 from vertexai.vision_models import ImageGenerationModel
 
+# load project configuration from .env file
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 T = TypeVar('T')
 
@@ -16,7 +22,11 @@ T = TypeVar('T')
 DEFAULT_T2I_VERTEX_ID = 'imagen-3.0-generate-001'
 DEFAULT_LLM_VERTEX_ID = 'gemini-1.5-pro-002'
 
-vertexai.init(project=<YOUR_PROJECT_ID>, location='us-central1') # add your project ID
+# initialize Vertex AI client using project ID from environment variable
+project_id = os.getenv('VERTEX_PROJECT_ID')
+if project_id is None:
+    raise RuntimeError('VERTEX_PROJECT_ID not found in environment; please set it in .env or the environment')
+vertexai.init(project=project_id, location='us-central1')  # project read from .env
 
 class LLM:
   """LLM for text manipulation."""
