@@ -20,7 +20,7 @@ T = TypeVar('T')
 # Vertex AI model ids
 # https://cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference
 DEFAULT_T2I_VERTEX_ID = 'imagen-3.0-generate-001'
-DEFAULT_LLM_VERTEX_ID = 'gemini-1.5-pro-002'
+DEFAULT_LLM_VERTEX_ID = 'gemini-2.5-flash'
 
 # initialize Vertex AI client using project ID from environment variable
 project_id = os.getenv('VERTEX_PROJECT_ID')
